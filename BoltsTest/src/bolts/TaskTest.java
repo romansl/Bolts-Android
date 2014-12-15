@@ -3,7 +3,7 @@
  *  All rights reserved.
  *
  *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant 
+ *  LICENSE file in the root directory of this source tree. An additional grant
  *  of patent rights can be found in the PATENTS file in the same directory.
  *
  */
@@ -348,7 +348,7 @@ public class TaskTest extends InstrumentationTestCase {
       public Task<?> call() throws Exception {
         final ArrayList<Task<Void>> tasks = new ArrayList<Task<Void>>();
         for (int i = 0; i < 20; i++) {
-          final Task<Void>.TaskCompletionSource tcs = Task.create();
+          final Task.TaskCompletionSource<Void> tcs = Task.create();
 
           final int number = i;
           Task.callInBackground(new Callable<Void>() {
