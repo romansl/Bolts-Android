@@ -14,7 +14,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -156,7 +155,7 @@ public class Task<TResult> {
     }
 
     /**
-     * Turns a Task<T> into a Task<Void>, dropping any result.
+     * Turns a {@code Task<T>} into a {@code Task<Void>}, dropping any result.
      */
     public Task<Void> makeVoid() {
         return this.continueWithTask(new Continuation<TResult, Task<Void>>() {
@@ -495,7 +494,7 @@ public class Task<TResult> {
 
     /**
      * Allows safe orchestration of a task's completion, preventing the consumer from prematurely
-     * completing the task. Essentially, it represents the producer side of a Task<TResult>, providing
+     * completing the task. Essentially, it represents the producer side of a {@link Task}, providing
      * access to the consumer side through the getTask() method while isolating the Task's completion
      * mechanisms from the consumer.
      */
