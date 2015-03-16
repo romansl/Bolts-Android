@@ -35,11 +35,6 @@ public class Task<TResult> {
      */
     private static final Executor IMMEDIATE_EXECUTOR = BoltsExecutors.immediate();
 
-    /**
-     * An {@link java.util.concurrent.Executor} that executes tasks on the UI thread.
-     */
-    public static final Executor UI_THREAD_EXECUTOR = AndroidExecutors.uiThread();
-
     private final Object lock = new Object();
     private boolean complete;
     private boolean cancelled;

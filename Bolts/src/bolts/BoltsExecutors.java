@@ -1,8 +1,8 @@
 package bolts;
 
-import java.util.Locale;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Collection of {@link Executor}s to use in conjunction with {@link Task}.
@@ -11,19 +11,11 @@ final class BoltsExecutors {
 
     private static final BoltsExecutors INSTANCE = new BoltsExecutors();
 
-    private static boolean isAndroidRuntime() {
-        String javaRuntimeName = System.getProperty("java.runtime.name");
-        if (javaRuntimeName == null) {
-            return false;
-        }
-        return javaRuntimeName.toLowerCase(Locale.US).contains("android");
-    }
-
     private final ExecutorService background;
     private final Executor immediate;
 
     private BoltsExecutors() {
-        background = !isAndroidRuntime() ? java.util.concurrent.Executors.newCachedThreadPool() : AndroidExecutors.newCachedThreadPool();
+        background = Executors.newCachedThreadPool();
         immediate = new ImmediateExecutor();
     }
 
